@@ -3,4 +3,4 @@
 ?>
 
 
-<p>Bienvenue Michen</p>
+<p>Bienvenue Michen BG</p>
