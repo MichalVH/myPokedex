@@ -1,3 +1,105 @@
+body {
+    background-color: dodgerblue;
+    color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+}
+
 h1 {
-    color: blueviolet;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.5em;
+    text-transform: capitalize;
+}
+
+.green {
+    background-color: #009432;
+}
+
+.orange {
+    background-color: #F79F1F;
+}
+
+.red {
+    background-color: #EA2027;
+}
+
+/* SECTION LISTANT TOUS LES POKEMON*/
+
+#pokemon-list {
+     
+}
+
+/* DIV AFFICHANT UN POKEMON */
+
+.pokemon-single {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    margin: 2rem auto;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    background-color: black;
+    padding: 1.5em 1em;
+}
+
+/* Div affichant les infos du pokemon */
+
+.pokemon-informations {
+    width: fit-content;
+    padding: 1em 0;
+}
+
+.pokemon-icon {
+    width: 250px;
+    height: 250px;
+}
+
+.pokemon-name {
+    width: fit-content;
+    margin: 1rem auto;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.pokemon-types {
+    width: fit-content;
+    display: flex;
+    margin: 0 auto;
+}
+
+.type-single {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+}
+
+.pokemon-type_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.pokemon-type_name {
+    font-weight: 500;
+    text-align: center;
+    margin-top: .5em;
+}
+
+/* Div affichant les stats du pokemon */
+
+.pokemon-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.2em;
+    border-left: 2px solid gold;
+    margin-left: 1em;
+    padding: 2em;
+}
+
+.pokemon-stats span {
+    border-radius: 25px;
+    padding: .3em;
 }
