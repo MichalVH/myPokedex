@@ -1,10 +1,11 @@
 const app = {
 
     init: function () {
-         console.log("myPokedexApp : application loading successfully");
-         // Set the interval to call the function making the API call every hour || (1000 ms * 3600 = 1 hour) ||
-        // nIntervId = setInterval(app.fetchCityName, 1000*3600);
-        // Make the first API call 
+
+        console.log("myPokedexApp : application chargée avec succès");
+        console.log("myPokedexApp : Bienvenue Michen");
+
+        // appel la fonction permettant de générer la liste des pokémons souhaités 
         app.createPokemonList();
     },
 
@@ -12,7 +13,7 @@ const app = {
 
         const pokemonList = []; 
 
-        pokemonList.push("florizarre", "tortank", "dracaufeu")
+        pokemonList.push("carchacrok", "oratoria", "exagide", "corvaillus", "pondralugon", "paragruel", "ectoplasma", "hippodocus", "miascarade", "mimiqui", "scalpereur", "dracolosse", "kangourex", "lockpin", "trioxhydre", "floreclat", "floette", "dracaufeu", "cizayox", "pyrax", "farfurex", "goupelin", "motisma", "noctali", "leviator", "lucario", "staross", "melodelfe", "meganium", "florizarre", "amphinobi", "malvalame", "predasterie", "lanssorien", "cleopsytra", "tortank", "flamigator", "sorcilence", "bekipan", "nymphali", "ampibidou", "tyranocif", "azumarill", "roigada", "empiflor", "excavarenne", "scovilain", "mammochon", "minotaupe", "momartik", "ronflex", "metamorph", "hachecateur", "airmure", "superdofin", "clamiral", "tyranocif", "muplodocus", "gardevoir", "arcanin", "milobellus", "tarenbulle", "majaspic", "zoroark", "feunard", "farfaduvet", "blindepique", "felinferno", "pingoleon", "scarhino", "branette", "ferdeter", "flagadoss", )
         // console.log(pokemonList);
 
         app.fetchAllPokemonData(pokemonList);
@@ -42,40 +43,31 @@ const app = {
     },
 
     showAllPokemonData (pokemonData) {
+
         console.log(pokemonData);
 
+        // selection de la section affichant tous les pokemons
         const pokemonList = document.getElementById('pokemon-list');
-        
-        let listItem = document.createElement('li');
-        listItem.classList.add('pokemon-single');
-        listItem.textContent = pokemonData.name.fr;
-        pokemonList.append(listItem);
+
+        // creation et ajout de la div affichant 1 seul pokemon
+        let sectionItem = document.createElement('div');
+        sectionItem.classList.add('pokemon-single');
+        pokemonList.append(sectionItem);
+
+        // ajout de l'icone du pokemon à la div
+        let pokemonIcon = document.createElement('img');
+        pokemonIcon.classList.add('pokemon-icon');
+        pokemonIcon.src = pokemonData.sprites.regular;
+        sectionItem.append(pokemonIcon);
+
+        // ajout du nom du pokemon à la div
+        let pokemonName = document.createElement('h3');
+        pokemonName.classList.add('pokemon-name');
+        pokemonName.textContent = pokemonData.name.fr;
+        sectionItem.append(pokemonName);
 
     },
 
-    // addWeatherDataToDOM: function (weatherData) {
-    //     const weatherContainer = document.getElementById('weather-container');
-
-    //     // Set the img's src & add the weather icon to DOM
-    //     let iconValue = weatherData.weather[0].icon;
-    //     const weatherIcon = weatherContainer.querySelector("#weather-icon");
-    //     weatherIcon.src = `https://openweathermap.org/img/wn/${iconValue}@2x.png`;
-
-    //     // Add the temperature to DOM
-    //     weatherContainer.querySelector("#temperature").textContent = Math.round(weatherData.main.temp) + "°C";
-
-    //     // Add the weather description to DOM
-    //     weatherContainer.querySelector("#description").textContent = weatherData.weather[0].description;
-
-    //     // Add the city name to DOM
-    //     weatherContainer.querySelector("#localisation").textContent = weatherData.name + ", " + weatherData.sys.country;
-
-    //     // Add the feelslike temperature to DOM
-    //      weatherContainer.querySelector("#feelslike").textContent = Math.round(weatherData.main.feels_like) + "°C";
-
-    //     // Add the humidity level to DOM
-    //      weatherContainer.querySelector("#humidity").textContent = weatherData.main.humidity + "%";
-    // }
 };
 
 document.addEventListener('DOMContentLoaded', app.init);

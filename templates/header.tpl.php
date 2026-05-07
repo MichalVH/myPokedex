@@ -8,6 +8,7 @@
     <!-- LINK GOOGLE FONT -->
     <!-- LINK RESET CSS -->
     <!-- LINK CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
     <!-- LINK BOOTSTRAP FOR ICON -->
     <!-- APP NAME -->
 </head>

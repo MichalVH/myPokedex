@@ -1,4 +1,4 @@
-<ul id="pokemon-list">
-
-</ul>
+<section id="pokemon-list">
+    
+</section>
     
