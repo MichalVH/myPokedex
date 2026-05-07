@@ -1,44 +1,56 @@
 const app = {
-     init: function () {
+
+    init: function () {
          console.log("myPokedexApp : application loading successfully");
          // Set the interval to call the function making the API call every hour || (1000 ms * 3600 = 1 hour) ||
         // nIntervId = setInterval(app.fetchCityName, 1000*3600);
         // Make the first API call 
-        app.fetchPokemonNameList();
+        app.createPokemonList();
     },
 
-    fetchPokemonNameList: async function () {
-        // const APIKEY = '0be0093e777d8e6ef27c75eb852f2943';
+    createPokemonList: function () {
 
-        // const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameValue}&appid=${APIKEY}&units=metric&lang=fr`;
-        const url = "https://pokeapi.co/api/v2/pokemon?limit=9/"
+        const pokemonList = []; 
 
-        try {
-            const response = await fetch(`${url}`);
-            const pokemonNameList = await response.json();
-            console.log(pokemonNameList);
+        pokemonList.push("florizarre", "tortank", "dracaufeu")
+        // console.log(pokemonList);
 
-            app.fetchPokemonData(pokemonNameList);
-            
-        } catch (error) {
-            console.error("Erreur rencontrée lors de la récupération des données : " + error);
-          }
+        app.fetchAllPokemonData(pokemonList);
+
     },
 
-    fetchPokemonData: async function (pokemonNameList) {
-        const pokemonName = pokemonNameList.results[0].name;
-        console.log(pokemonName);
+    fetchAllPokemonData: async function (pokemonList) {
+
+        for(let i = 0; i < pokemonList.length; i++) {
+
+            let pokemonName = pokemonList[i];
+            // console.log(pokemonName);
+
+            const url = `https://tyradex.app/api/v1/pokemon/${pokemonName}`
+
+            try {
+                const response = await fetch(`${url}`);
+                const pokemonData = await response.json();
+                // console.log(pokemonData.name.fr);
+                app.showAllPokemonData(pokemonData);
+            } catch (error) {
+                console.error("Erreur rencontrée lors de la récupération des données : " + error);
+            }
+
+        }
         
-        const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    },
 
-        try {
-            const response = await fetch(`${url}`);
-            const pokemonData = await response.json();
-            console.log(pokemonData)
+    showAllPokemonData (pokemonData) {
+        console.log(pokemonData);
 
-         } catch (error) {
-             console.error("Erreur rencontrée lors de la récupération des données : " + error);
-           }
+        const pokemonList = document.getElementById('pokemon-list');
+        
+        let listItem = document.createElement('li');
+        listItem.classList.add('pokemon-single');
+        listItem.textContent = pokemonData.name.fr;
+        pokemonList.append(listItem);
+
     },
 
     // addWeatherDataToDOM: function (weatherData) {

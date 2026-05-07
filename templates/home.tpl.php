@@ -1,3 +1,4 @@
-<?php 
-    echo "salut";
+<ul id="pokemon-list">
+
+</ul>
     
